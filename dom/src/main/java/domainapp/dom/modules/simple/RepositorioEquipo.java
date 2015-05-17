@@ -31,12 +31,12 @@ public class RepositorioEquipo {
 
     //region > create (action)
     @MemberOrder(sequence = "1")
-    public equipo create(
+    public SimpleObject create(
             final @ParameterLayout(named="Name") String name) {
-        final equipo equipo = container.newTransientInstance(equipo.class);
-        equipo.setName(name);
-        container.persistIfNotAlready(equipo);
-        return equipo;
+        final SimpleObject obj = container.newTransientInstance(SimpleObject.class);
+        obj.setName(name);
+        container.persistIfNotAlready(obj);
+        return obj;
     }
 
     //endregion

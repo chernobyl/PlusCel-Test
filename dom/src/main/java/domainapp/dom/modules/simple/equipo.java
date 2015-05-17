@@ -1,10 +1,19 @@
 package domainapp.dom.modules.simple;
 
+import javax.jdo.annotations.IdentityType;
+
 import org.apache.isis.applib.DomainObjectContainer;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
+import org.apache.isis.applib.annotation.DomainObjectLayout;
 import org.apache.isis.applib.annotation.Editing;
 import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.i18n.TranslatableString;
+
+@javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
+@DomainObjectLayout(
+        bookmarking = BookmarkPolicy.AS_ROOT
+)
 
 public class equipo implements Comparable<equipo>{
 
