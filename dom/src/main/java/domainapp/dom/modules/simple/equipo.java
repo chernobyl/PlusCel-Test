@@ -6,7 +6,7 @@ import org.apache.isis.applib.annotation.Property;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.i18n.TranslatableString;
 
-public class equipo {
+public class equipo implements Comparable<equipo>{
 
 	 //region > identificatiom
     public TranslatableString title() {
@@ -35,6 +35,12 @@ public class equipo {
     @javax.inject.Inject
     @SuppressWarnings("unused")
     private DomainObjectContainer container;
+
+	@Override
+	public int compareTo(equipo o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
     //endregion    	
 }
