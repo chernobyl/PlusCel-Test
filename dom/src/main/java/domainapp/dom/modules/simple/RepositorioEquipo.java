@@ -31,14 +31,16 @@ public class RepositorioEquipo {
 
     //region > create (action)
     @MemberOrder(sequence = "1")
-    public SimpleObject create(
-            final @ParameterLayout(named="Name") String name) {
-        final SimpleObject obj = container.newTransientInstance(SimpleObject.class);
-        obj.setName(name);
-        container.persistIfNotAlready(obj);
-        return obj;
+    public equipo create(
+        final @ParameterLayout(named="Name") String name, String imei) {
+        final equipo equipo = container.newTransientInstance(equipo.class);
+        equipo.setName(name);
+        equipo.setImei(imei);
+        container.persistIfNotAlready(equipo);
+        return equipo;
     }
 
+     
     //endregion
 
     //region > injected services

@@ -19,7 +19,8 @@ public class equipo implements Comparable<equipo>{
 
 	 //region > identificatiom
     public TranslatableString title() {
-        return TranslatableString.tr("Object: {name}", "name", getName());
+        return TranslatableString.tr("Object: {name}", "name", getName(),
+        							"Object: {imei}", "imei", getImei());
     }
     //endregion
 
@@ -38,6 +39,28 @@ public class equipo implements Comparable<equipo>{
 
     public void setName(final String name) {
         this.name = name;
+    }
+    //region > injected services
+    
+    
+    //.....
+
+
+    //region > imei (property)
+
+    private String imei;
+
+    @javax.jdo.annotations.Column(allowsNull="false", length = 40)
+    @Title(sequence="2")
+    @Property(
+            editing = Editing.DISABLED
+    )
+    public String getImei() {
+        return imei;
+    }
+
+    public void setImei(final String imei) {
+        this.imei = imei;
     }
     //region > injected services
 
