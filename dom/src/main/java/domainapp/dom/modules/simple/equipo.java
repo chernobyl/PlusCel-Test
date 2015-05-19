@@ -20,7 +20,8 @@ public class equipo implements Comparable<equipo>{
 	 //region > identificatiom
     public TranslatableString title() {
         return TranslatableString.tr("Object: {name}", "name", getName(),
-        							"Object: {imei}", "imei", getImei());
+        							"Object: {imei}", "imei", getImei(),
+        							"Object: {telefono}", "telefono", getTelefono());
     }
     //endregion
 
@@ -41,10 +42,6 @@ public class equipo implements Comparable<equipo>{
         this.name = name;
     }
     //region > injected services
-    
-    
-    //.....
-
 
     //region > imei (property)
 
@@ -53,7 +50,7 @@ public class equipo implements Comparable<equipo>{
     @javax.jdo.annotations.Column(allowsNull="false", length = 40)
     @Title(sequence="2")
     @Property(
-            editing = Editing.DISABLED
+            editing = Editing.ENABLED
     )
     public String getImei() {
         return imei;
@@ -62,6 +59,25 @@ public class equipo implements Comparable<equipo>{
     public void setImei(final String imei) {
         this.imei = imei;
     }
+    
+    //region > Telefono (property)
+
+    private String telefono;
+
+    @javax.jdo.annotations.Column(allowsNull="false", length = 40)
+    @Title(sequence="3")
+    @Property(
+            editing = Editing.ENABLED
+    )
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(final String telefono) {
+        this.telefono = imei;
+    }
+    
+    
     //region > injected services
 
     @javax.inject.Inject

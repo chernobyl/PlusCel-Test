@@ -32,10 +32,13 @@ public class RepositorioEquipo {
     //region > create (action)
     @MemberOrder(sequence = "1")
     public equipo create(
-        final @ParameterLayout(named="Name") String name, String imei) {
+        final 	@ParameterLayout(named="Nombre") String name,
+        		@ParameterLayout(named="Imei") String imei,
+        		@ParameterLayout(named="Telefono") String telefono) {
         final equipo equipo = container.newTransientInstance(equipo.class);
         equipo.setName(name);
         equipo.setImei(imei);
+        equipo.setTelefono(telefono);
         container.persistIfNotAlready(equipo);
         return equipo;
     }
