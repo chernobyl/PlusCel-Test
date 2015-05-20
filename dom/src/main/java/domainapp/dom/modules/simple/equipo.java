@@ -15,7 +15,7 @@ import org.apache.isis.applib.services.i18n.TranslatableString;
         bookmarking = BookmarkPolicy.AS_ROOT
 )
 
-public class equipo implements Comparable<equipo>{
+public class Equipo implements Comparable<Equipo>{
 
 	 //region > identificatiom
     public TranslatableString title() {
@@ -85,7 +85,7 @@ public class equipo implements Comparable<equipo>{
     private DomainObjectContainer container;
 
 	@Override
-	public int compareTo(equipo o) {
+	public int compareTo(Equipo o) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

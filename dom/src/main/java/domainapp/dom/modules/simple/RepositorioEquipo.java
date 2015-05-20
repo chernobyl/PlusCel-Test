@@ -19,23 +19,29 @@
 package domainapp.dom.modules.simple;
 
 
+import java.util.List;
+
 import org.apache.isis.applib.DomainObjectContainer;
+import org.apache.isis.applib.annotation.Action;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.BookmarkPolicy;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.ParameterLayout;
+import org.apache.isis.applib.annotation.SemanticsOf;
 
-@DomainService(repositoryFor = equipo.class)
+@DomainService(repositoryFor = Equipo.class)
 @DomainServiceLayout(menuOrder = "10")
 public class RepositorioEquipo {
 
     //region > create (action)
     @MemberOrder(sequence = "1")
-    public equipo create(
+    public Equipo create(
         final 	@ParameterLayout(named="Nombre") String name,
         		@ParameterLayout(named="Imei") String imei,
         		@ParameterLayout(named="Telefono") String telefono) {
-        final equipo equipo = container.newTransientInstance(equipo.class);
+        final Equipo equipo = container.newTransientInstance(Equipo.class);
         equipo.setName(name);
         equipo.setImei(imei);
         equipo.setTelefono(telefono);
@@ -43,9 +49,21 @@ public class RepositorioEquipo {
         return equipo;
     }
 
-     
     //endregion
 
+  //region > listAll (action)
+    @Action(
+            semantics = SemanticsOf.SAFE
+    )
+    @ActionLayout(
+            bookmarking = BookmarkPolicy.AS_ROOT
+    )
+    @MemberOrder(sequence = "2")
+    public List<Equipo> listAll() {
+        return container.allInstances(Equipo.class);
+    }
+    //endregion
+    
     //region > injected services
 
     @javax.inject.Inject 
